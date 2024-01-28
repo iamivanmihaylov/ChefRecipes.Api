@@ -1,0 +1,47 @@
+﻿<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup>
+    <OutputType>Exe</OutputType>
+    <TargetFramework>net8.0</TargetFramework>
+    <LangVersion>latest</LangVersion>
+    <ImplicitUsings>enable</ImplicitUsings>
+  </PropertyGroup>
+
+  <PropertyGroup>
+    <CodeAnalysisRuleSet>..\..\Rules.ruleset</CodeAnalysisRuleSet>
+  </PropertyGroup>
+  <ItemGroup>
+    <AdditionalFiles Include="..\..\stylecop.json" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <Content Include="appsettings.json">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+      <CopyToPublishDirectory>PreserveNewest</CopyToPublishDirectory>
+    </Content>
+  </ItemGroup>
+
+  <ItemGroup>
+    <PackageReference Include="CommandLineParser" Version="2.9.1" />
+    <PackageReference Include="Microsoft.Extensions.Configuration" Version="8.0.0" />
+    <PackageReference Include="Microsoft.Extensions.Configuration.EnvironmentVariables" Version="8.0.0" />
+    <PackageReference Include="Microsoft.Extensions.Configuration.Json" Version="8.0.0" />
+    <PackageReference Include="Microsoft.Extensions.Logging.Console" Version="8.0.0" />
+    <PackageReference Include="Microsoft.AspNetCore.Identity.UI" Version="8.0.1" />
+    <PackageReference Include="StyleCop.Analyzers" Version="1.2.0-beta.435" PrivateAssets="all">
+      <IncludeAssets>runtime; build; native; contentfiles; analyzers</IncludeAssets>
+    </PackageReference>
+  </ItemGroup>
+
+  <ItemGroup>
+    <ProjectReference Include="..\..\ChefRecipes.Api.Common\ChefRecipes.Api.Common.csproj" />
+    <ProjectReference Include="..\..\Data\ChefRecipes.Api.Data.Common\ChefRecipes.Api.Data.Common.csproj" />
+    <ProjectReference Include="..\..\Data\ChefRecipes.Api.Data.Models\ChefRecipes.Api.Data.Models.csproj" />
+    <ProjectReference Include="..\..\Data\ChefRecipes.Api.Data\ChefRecipes.Api.Data.csproj" />
+    <ProjectReference Include="..\..\Services\ChefRecipes.Api.Services.Data\ChefRecipes.Api.Services.Data.csproj" />
+    <ProjectReference Include="..\..\Services\ChefRecipes.Api.Services.Mapping\ChefRecipes.Api.Services.Mapping.csproj" />
+    <ProjectReference Include="..\..\Services\ChefRecipes.Api.Services.Messaging\ChefRecipes.Api.Services.Messaging.csproj" />
+    <ProjectReference Include="..\..\Services\ChefRecipes.Api.Services\ChefRecipes.Api.Services.csproj" />
+  </ItemGroup>
+
+</Project>
