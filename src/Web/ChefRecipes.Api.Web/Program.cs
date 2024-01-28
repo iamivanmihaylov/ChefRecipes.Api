@@ -15,17 +15,6 @@ using Docker.DotNet.Models;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
 
-var dockerClient = new DockerClientConfiguration(new Uri("npipe://./pipe/docker_engine"))
-            .CreateClient();
-
-var config = new CreateContainerParameters
-{
-    Image = "mcr.microsoft.com/mssql/server:2022-latest",
-};
-
-var response = await dockerClient.Containers.CreateContainerAsync(config);
-await dockerClient.Containers.StartContainerAsync(response.ID, new ContainerStartParameters());
-
 var builder = WebApplication.CreateBuilder(args);
 ConfigureServices(builder.Services, builder.Configuration);
 var app = builder.Build();

@@ -1,0 +1,27 @@
+version: '3.4'
+
+services:
+  chefrecipes.api.web:
+    image: ${DOCKER_REGISTRY-}chefrecipesapiweb
+    container_name: chefrecipes.api
+    build:
+        context: .
+        dockerfile: Web/ChefRecipes.Api.Web/Dockerfile
+    ports:
+        - "5054:5054"
+        - "5055:5055"
+
+  chefrecipes.database:
+    image: mcr.microsoft.com/mssql/server:2022-latest
+    container_name: chefrecipes.mssql
+    environment:
+        - "ACCEPT_EULA=Y"
+        - "MSSQL_SA_PASSWORD=SecretPass!1!"
+    volumes:
+        - sqlserverdata:/var/opt/mssql
+    ports:
+        - "1433:1433"
+
+volumes:
+    sqlserverdata:
+        name: sqlserverdata
