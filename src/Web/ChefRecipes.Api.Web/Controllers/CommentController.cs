@@ -1,37 +1,23 @@
-﻿using ChefRecipes.Api.Web.ViewModels.Recipes;
-using Microsoft.AspNetCore.Mvc;
-using Microsoft.AspNetCore.Mvc.ModelBinding;
+﻿using Microsoft.AspNetCore.Mvc;
 
 namespace ChefRecipes.Api.Web.Controllers
 {
     public class CommentController : BaseApiController
     {
-        [HttpPost]
-        public IActionResult Like(string userId, int commentId)
-        {
-            return this.Ok();
-        }
-
-        [HttpDelete]
-        public IActionResult Dislike(string userId, int commentId)
-        {
-            return this.Ok();
-        }
-
-        [HttpPost]
-        public IActionResult Create([FromBody] RecipeCreateModel createModel)
-        {
-            return this.Ok(createModel);
-        }
-
         [HttpGet("{recipeId:int}")]
-        public IActionResult GetByRecipeId(int recipeId, [FromQuery] int? page)
+        public IActionResult GetAll(int recipeId, [FromQuery] object filtersObject)
         {
             return this.Ok();
         }
 
-        [HttpDelete("{commentId:int}")]
-        public IActionResult Delete(int commentId)
+        [HttpPost("{recipeId:int}")]
+        public IActionResult CreateComment(int recipeId, [FromQuery] int parentCommentId, [FromBody] object inputModel)
+        {
+            return this.Ok();
+        }
+
+        [HttpDelete("{recipeId:int}/{commentId:int}")]
+        public IActionResult DeleteComment(int recipeId, int commentId)
         {
             return this.Ok();
         }
